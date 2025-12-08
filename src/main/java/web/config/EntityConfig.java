@@ -1,7 +1,9 @@
 package web.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -17,13 +19,16 @@ import java.util.Properties;
 @EnableTransactionManagement
 public class EntityConfig {
 
+    @Autowired
+    private Environment environment;
+
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource ds = new DriverManagerDataSource();
-        ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://localhost:3306/example_schema?useSSL=false&serverTimezone=UTC");
-        ds.setUsername("root");
-        ds.setPassword("Password123");
+        ds.setDriverClassName(environment.getProperty("db.driver"));
+        ds.setUrl(environment.getProperty("db.url"));
+        ds.setUsername(environment.getProperty("db.username"));
+        ds.setPassword(environment.getProperty("db.password"));
         return ds;
     }
 
