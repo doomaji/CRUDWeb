@@ -5,9 +5,9 @@
     <title>User form</title>
 </head>
 <body>
-<h1 th:text="${#strings.isEmpty(${user.id}) ? 'Create user' : 'Edit user'}"></h1>
+<h1 th:text="${#strings.isEmpty(user?.id) ? 'Create user' : 'Edit user'}"></h1>
 
-<form th:action="@{/users/save}" th:object="${user}" method="post">
+<form th:action="@{/save}" th:object="${user}" method="post">
     <input type="hidden" th:field="*{id}"/>
 
     <label>First name:
@@ -20,14 +20,14 @@
     </label>
     <br/>
 
-    <label>Age:
-        <input type="number" th:field="*{email}"/>
+    <label>Email:
+        <input type="text" th:field="*{email}"/>
     </label>
     <br/>
 
     <button type="submit">Save</button>
 </form>
 
-<a th:href="@{/users}">Back to list</a>
+<a th:href="@{/}">Back to list</a>
 </body>
 </html>
