@@ -2,6 +2,10 @@ package web.model;
 
 import javax.persistence.*;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -11,12 +15,25 @@ public class User {
     private Long id;
 
     @Column(name = "name")
+    @NotBlank(message = "Имя не может быть пустым")
+    @Pattern(
+            regexp = "^[A-Za-zА-Яа-яЁё\\s]+$",
+            message = "Имя не должно содержать цифры или спецсимволы"
+    )
     private String firstName;
 
     @Column(name = "last_name")
+    @NotBlank(message = "Имя не может быть пустым")
+    @Pattern(
+            regexp = "^[A-Za-zА-Яа-яЁё\\s]+$",
+            message = "Имя не должно содержать цифры или спецсимволы"
+    )
+
     private String lastName;
 
     @Column(name = "email")
+    @NotBlank(message = "Email не может быть пустым")
+    @Email(message = "Некорректный email")
     private String email;
 
     public User() {}

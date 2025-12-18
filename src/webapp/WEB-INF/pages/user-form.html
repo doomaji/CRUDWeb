@@ -11,17 +11,16 @@
     <input type="hidden" th:field="*{id}"/>
 
     <label>First name:
-        <input type="text" th:field="*{firstName}"/>
+        <input type="text" th:field="*{firstName}" th:required="A-Za-zА-Яа-яЁё"/>
     </label>
     <br/>
-
     <label>Last name:
-        <input type="text" th:field="*{lastName}"/>
+        <input type="text" th:field="*{lastName}" required pattern="^[A-Za-zА-Яа-яЁё\-']+$" />
     </label>
     <br/>
 
     <label>Email:
-        <input type="text" th:field="*{email}"/>
+        <input type="email" th:field="*{email}"/>
     </label>
     <br/>
 
