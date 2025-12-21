@@ -1,7 +1,9 @@
 package web.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import web.model.User;
 import web.service.UserService;
@@ -35,7 +37,11 @@ public class UserController {
     }
 
     @PostMapping("/save")
-    public String saveUser(@ModelAttribute("user") User user) {
+    public String saveUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "user-form";
+        }
         userService.saveUser(user);
         return "redirect:/";
     }

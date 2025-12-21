@@ -17,16 +17,16 @@ public class User {
     @Column(name = "name")
     @NotBlank(message = "Имя не может быть пустым")
     @Pattern(
-            regexp = "^[A-Za-zА-Яа-яЁё\\s]+$",
-            message = "Имя не должно содержать цифры или спецсимволы"
+            regexp = "^[^0-9]+$",
+            message = "Имя не должно содержать цифры"
     )
     private String firstName;
 
     @Column(name = "last_name")
     @NotBlank(message = "Имя не может быть пустым")
     @Pattern(
-            regexp = "^[A-Za-zА-Яа-яЁё\\s]+$",
-            message = "Имя не должно содержать цифры или спецсимволы"
+            regexp = "^[^0-9]+$",
+            message = "Имя не должно содержать цифры"
     )
 
     private String lastName;
