@@ -18,6 +18,7 @@
         th:errors="*{firstName}" style="color: red;">
     </div>
     <br/>
+
     <label>Last name:
         <input type="text" th:field="*{lastName}" />
     </label>
@@ -30,11 +31,17 @@
     <label>Email:
         <input type="email" th:field="*{email}"/>
     </label>
+    <div
+            th:if="${#fields.hasErrors('email')}"
+            th:errors="*{email}" style="color: red;">
+    </div>
     <br/>
 
     <button type="submit">Save</button>
 </form>
 
-<a th:href="@{/}">Back to list</a>
+<form th:action="@{/}" method="get">
+    <button type="submit">Back to list</button>
+</form>
 </body>
 </html>
