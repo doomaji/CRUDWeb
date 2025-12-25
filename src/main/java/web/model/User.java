@@ -14,25 +14,25 @@ public class User {
     private Long id;
 
     @Column(name = "name")
-    @NotBlank(message = "Имя не может быть пустым")
+    @NotBlank(message = "Name cannot be empty")
     @Pattern(
             regexp = "^[^0-9]+$",
-            message = "Имя не должно содержать цифры"
+            message = "Name cannot include numbers"
     )
     private String firstName;
 
     @Column(name = "last_name")
-    @NotBlank(message = "Имя не может быть пустым")
+    @NotBlank(message = "Last name cannot be empty")
     @Pattern(
             regexp = "^[^0-9]+$",
-            message = "Имя не должно содержать цифры"
+            message = "Фамилия не должна включать в себя цифры"
     )
 
     private String lastName;
 
     @Column(name = "email")
-    @NotBlank(message = "Email не может быть пустым")
-    @Email(message = "Некорректный email")
+    @NotBlank(message = "Email cannot be empty")
+    @Email(message = "Wrong email")
     private String email;
 
     public User() {}

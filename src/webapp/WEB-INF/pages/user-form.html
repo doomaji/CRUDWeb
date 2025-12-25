@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
     <meta charset="UTF-8"/>
     <title>User form</title>
@@ -11,12 +11,20 @@
     <input type="hidden" th:field="*{id}"/>
 
     <label>First name:
-        <input type="text" th:field="*{firstName}" th:required="A-Za-zА-Яа-яЁё"/>
+        <input type="text" th:field="*{firstName}"/>
     </label>
+    <div
+        th:if="${#fields.hasErrors('firstName')}"
+        th:errors="*{firstName}" style="color: red;">
+    </div>
     <br/>
     <label>Last name:
-        <input type="text" th:field="*{lastName}" required pattern="^[A-Za-zА-Яа-яЁё\-']+$" />
+        <input type="text" th:field="*{lastName}" />
     </label>
+    <div
+            th:if="${#fields.hasErrors('lastName')}"
+            th:errors="*{lastName}" style="color: red;">
+    </div>
     <br/>
 
     <label>Email:
